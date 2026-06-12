@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shafi Swapnil - AI Product Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink:       #0D1117;
+  --accent:    #6366F1;
+  --accent-bg: #EEF2FF;
+  --muted:     #64748B;
+  --soft:      #94A3B8;
+  --border:    #E2E8F0;
+  --bg:        #FFFFFF;
+  --body:      'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --display:   'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+  font-family: var(--body);
+  color: var(--ink);
+  background: #F1F5F9;
+  font-size: 13px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ═══════════════════════════════════════
+   PAGE WRAPPER
+═══════════════════════════════════════ */
+.page-wrapper {
+  max-width: 800px;
+  margin: 28px auto;
+  background: var(--bg);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(0,0,0,.07), 0 8px 32px rgba(0,0,0,.10);
+}
+
+/* ═══════════════════════════════════════
+   TOOLBAR
+═══════════════════════════════════════ */
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 9px 22px;
+  background: #F8FAFC;
+  border-bottom: 1px solid var(--border);
+  font-size: 11.5px;
+  color: var(--muted);
+}
+
+.print-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: var(--body);
+  transition: background .15s, transform .1s;
+}
+.print-btn:hover { background: #4F46E5; transform: translateY(-1px); }
+.print-btn:active { transform: translateY(0); }
+
+/* ═══════════════════════════════════════
+   RESUME CANVAS
+═══════════════════════════════════════ */
+.resume {
+  padding: 36px 44px 34px;
+}
+
+/* ═══════════════════════════════════════
+   HEADER
+═══════════════════════════════════════ */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  padding-bottom: 18px;
+  margin-bottom: 20px;
+  border-bottom: 2.5px solid var(--ink);
+}
+
+.header-left h1 {
+  font-family: var(--display);
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: -0.8px;
+  line-height: 1;
+  color: var(--ink);
+}
+
+.role-pill {
+  display: inline-block;
+  margin-top: 8px;
+  background: var(--accent-bg);
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 11px;
+  border-radius: 99px;
+  letter-spacing: 0.2px;
+}
+
+.header-right {
+  text-align: right;
+  font-size: 11.5px;
+  line-height: 1.95;
+  color: var(--muted);
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+
+.header-right a {
+  color: var(--muted);
+  text-decoration: none;
+}
+.header-right a:hover { color: var(--accent); }
+
+/* ═══════════════════════════════════════
+   SECTION LABEL
+═══════════════════════════════════════ */
+.section { margin-bottom: 18px; }
+
+.section-label {
+  font-family: var(--display);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+  border-left: 3px solid var(--accent);
+  padding-left: 8px;
+  margin-bottom: 11px;
+  line-height: 1;
+}
+
+/* ═══════════════════════════════════════
+   SUMMARY
+═══════════════════════════════════════ */
+.summary {
+  font-size: 12.5px;
+  color: #334155;
+  line-height: 1.72;
+}
+
+/* ═══════════════════════════════════════
+   EXPERIENCE ENTRIES
+═══════════════════════════════════════ */
+.exp-item {
+  margin-bottom: 14px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+}
+.exp-item:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.exp-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 2px 8px;
+  margin-bottom: 2px;
+}
+
+.exp-title {
+  font-family: var(--display);
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.exp-co {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--accent);
+}
+
+.exp-sep {
+  color: var(--border);
+  margin: 0 3px;
+}
+
+.exp-date {
+  font-size: 10.5px;
+  color: var(--soft);
+  font-family: 'Courier New', Courier, monospace;
+  white-space: nowrap;
+}
+
+.exp-sub {
+  font-size: 11px;
+  color: var(--muted);
+  margin-bottom: 6px;
+  font-style: italic;
+}
+
+.exp-bullets {
+  list-style: none;
+}
+
+.exp-bullets li {
+  position: relative;
+  padding-left: 13px;
+  margin-bottom: 3.5px;
+  font-size: 12px;
+  color: #1E293B;
+  line-height: 1.55;
+}
+
+.exp-bullets li::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-size: 9px;
+  top: 3.5px;
+}
+
+.exp-bullets strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* ═══════════════════════════════════════
+   BOTTOM GRID
+═══════════════════════════════════════ */
+.bottom-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 0 32px;
+}
+
+/* ═══════════════════════════════════════
+   SKILLS
+═══════════════════════════════════════ */
+.skill-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.skill-row {
+  display: flex;
+  gap: 7px;
+  align-items: baseline;
+  font-size: 11.5px;
+  line-height: 1.5;
+}
+
+.skill-cat {
+  font-family: var(--display);
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--ink);
+  min-width: 82px;
+  flex-shrink: 0;
+}
+
+.skill-val {
+  color: #475569;
+  font-size: 11.5px;
+}
+
+/* ═══════════════════════════════════════
+   EDUCATION + BUILDING
+═══════════════════════════════════════ */
+.edu-deg {
+  font-family: var(--display);
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.edu-inst {
+  font-size: 11.5px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.edu-note {
+  font-size: 10.5px;
+  color: var(--soft);
+  margin-top: 2px;
+}
+
+.building-text {
+  font-size: 11.5px;
+  color: #475569;
+  line-height: 1.7;
+}
+
+.goal-tag {
+  display: inline-block;
+  background: var(--accent-bg);
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 10.5px;
+  padding: 1px 7px;
+  border-radius: 99px;
+  margin-top: 4px;
+}
+
+/* ═══════════════════════════════════════
+   PRINT
+═══════════════════════════════════════ */
+@media print {
+  body {
+    background: white;
+    font-size: 11.5px;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .page-wrapper {
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+    max-width: 100%;
+  }
+  .toolbar { display: none !important; }
+  .resume { padding: 18px 26px 14px; }
+  .header-left h1 { font-size: 22px; }
+  .section { margin-bottom: 12px; }
+  .exp-item { margin-bottom: 10px; padding-bottom: 10px; }
+  .exp-bullets li { font-size: 10.5px; margin-bottom: 2.5px; }
+  .skill-row { font-size: 10.5px; }
+  .summary { font-size: 11.5px; }
+  @page { margin: 0.35in; size: Letter; }
+}
+
+</style>
+</head>
+<body>
+
+<div class="page-wrapper">
+
+  <!-- ░░░ TOOLBAR ░░░ -->
+  <div class="toolbar">
+    <button class="print-btn" onclick="window.print()">⬇ Save as PDF</button>
+  </div>
+
+  <div class="resume">
+
+    <!-- ░░░ HEADER ░░░ -->
+    <div class="header">
+      <div class="header-left">
+        <h1>Shafi Ahmed Swapnil</h1>
+        <span class="role-pill">AI Product Engineer &amp; Technical Operations Lead</span>
+      </div>
+      <div class="header-right">
+        <div>📍 Dhaka, Bangladesh</div>
+        <div>✉ <a href="mailto:swapnil.env@gmail.com">swapnil.env@gmail.com</a></div>
+        <div>📞 <a href="tel:+8801783192763">+880 1783-192763</a></div>
+        <div>🔗 <a href="https://www.linkedin.com/in/shafiswapnil/" target="_blank">linkedin.com/in/shafiswapnil</a></div>
+        <div>⌥ <a href="https://github.com/shafiswapnil" target="_blank">github.com/shafiswapnil</a></div>
+      </div>
+    </div>
+
+    <!-- ░░░ PROFILE SUMMARY ░░░ -->
+    <div class="section">
+      <div class="section-label">Profile</div>
+      <p class="summary">
+        Technical operator with 3+ years building EdTech platforms from
+        <strong>zero to 1M+ users</strong>. I bridge business strategy and engineering execution —
+        combining AI/LLM-assisted product development, cloud infrastructure, and end-to-end product
+        ownership to ship high-impact digital products fast. Former operator across 200+ people in
+        high-growth EdTech orgs. Targeting AI Engineer roles while actively building ML and LLM application skills.
+      </p>
+    </div>
+
+    <!-- ░░░ EXPERIENCE ░░░ -->
+    <div class="section">
+      <div class="section-label">Experience</div>
+
+      <!-- CoderVai ─────────────────────────────── -->
+      <div class="exp-item">
+        <div class="exp-top">
+          <div>
+            <span class="exp-title">Technical Operations Lead</span>
+            <span class="exp-sep">·</span>
+            <span class="exp-co">CoderVai</span>
+          </div>
+          <span class="exp-date">Jan 2023 → Present · Dhaka, BD</span>
+        </div>
+        <div class="exp-sub">EdTech startup teaching Competitive Programming, Android Dev &amp; CSE Fundamentals in Bengali</div>
+        <ul class="exp-bullets">
+          <li>Sole operator owning <strong>tech, product, marketing, HR, and finance</strong> end-to-end for a bootstrapped EdTech — capable of running the company independently if needed</li>
+          <li>Architected <strong>AI-assisted product development workflows</strong> using Cursor, OpenAI API &amp; Anthropic Claude, achieving equivalent output of a 3-person team as a single operator</li>
+          <li>Engineered complete <strong>video CDN pipeline</strong>: record → edit (trim, audio, intro/outro) → BunnyCDN + AWS S3 upload → LMS backend integration; maintained near-100% uptime for all course content</li>
+          <li>Operated multi-platform <strong>live streaming infrastructure</strong> (OBS, Streamyard, Restream) — simultaneous broadcast to YouTube, Facebook, and platform for cohort sessions</li>
+          <li>Owned full product lifecycle: Figma UI design → developer handoff → backend CMS setup (courses, pricing, quizzes, coding problems, assignments) → launch campaign → repeat</li>
+          <li>Managed <strong>AWS EC2/S3, GCP, Cloudflare CDN/DNS</strong> and BunnyCDN infrastructure; oversaw 15+ SaaS subscriptions with full vendor cost-optimization responsibility</li>
+          <li>Built and led cross-functional team (developers, instructors, freelancers, calling operators): drafted JDs, ran hiring, managed NDAs, payroll, and weekly KPI reviews</li>
+        </ul>
+      </div>
+
+      <!-- ACS Future School ────────────────────── -->
+      <div class="exp-item">
+        <div class="exp-top">
+          <div>
+            <span class="exp-title">Tech Lead Contributor</span>
+            <span class="exp-sep">·</span>
+            <span class="exp-co">ACS Future School</span>
+            <span style="font-size:10.5px; color:#94A3B8;"> (via CoderVai)</span>
+          </div>
+          <span class="exp-date">2023–2024 · Dhaka, BD</span>
+        </div>
+        <div class="exp-sub">Large-scale EdTech platform · Grade 6–10 · Bangladesh</div>
+        <ul class="exp-bullets">
+          <li>Contributed to platform build from <strong>day 0 to 1M+ total users</strong>; live academic cohorts served 22,000–40,000 students simultaneously per batch</li>
+          <li>Collaborated directly with CTO on <strong>AWS architecture</strong> decisions: CDN video streaming, custom AI chatbot, multi-platform LMS (web + Android + iOS), user-level watch-progress tracking, live class &amp; VOD delivery</li>
+          <li>Maintained access to full GitHub codebase and Jira across a 10+ engineer team (backend, frontend, mobile, DevOps, AI); participated in sprint planning and architecture reviews</li>
+        </ul>
+      </div>
+
+      <!-- 10 Minute School ─────────────────────── -->
+      <div class="exp-item">
+        <div class="exp-top">
+          <div>
+            <span class="exp-title">Project Manager</span>
+            <span class="exp-sep">·</span>
+            <span class="exp-co">10 Minute School</span>
+          </div>
+          <span class="exp-date">Mar 2021 – Sep 2022 · Remote</span>
+        </div>
+        <div class="exp-sub">Bangladesh's largest EdTech platform · 5M+ learners</div>
+        <ul class="exp-bullets">
+          <li>Led QA &amp; Content team for the web content pool; managed full HR cycle (recruiting, training, payments) for 15+ freelancers; delivered <strong>SSC-HSC Board Question Bank</strong> project</li>
+          <li>Multi-role contributor: course creator (HSC Grammar &amp; ICT), infographic designer, SEO proofreader, and sales calling operator</li>
+        </ul>
+      </div>
+
+      <!-- Apars Classroom ─────────────────────── -->
+      <div class="exp-item">
+        <div class="exp-top">
+          <div>
+            <span class="exp-title">Course Coordinator · Response Team Lead · Frontend Developer</span>
+            <span class="exp-sep">·</span>
+            <span class="exp-co">Apars Classroom</span>
+          </div>
+          <span class="exp-date">Mar 2021 – May 2023 · Remote</span>
+        </div>
+        <ul class="exp-bullets">
+          <li>Built and managed 10+ person customer response team from scratch: wrote JDs, trained operators, created saved-reply library, tracked reply-time KPIs, ran VOC (Voice of Customer) sessions</li>
+          <li>Managed end-to-end course operations as Coordinator; developed frontend UI components with <strong>Vue.js &amp; CSS</strong> as Frontend Developer</li>
+        </ul>
+      </div>
+
+    </div><!-- end experience -->
+
+    <!-- ░░░ BOTTOM GRID: SKILLS + EDUCATION/BUILDING ░░░ -->
+    <div class="bottom-grid">
+
+      <!-- LEFT: SKILLS -->
+      <div class="section">
+        <div class="section-label">Technical Skills</div>
+        <div class="skill-list">
+          <div class="skill-row">
+            <span class="skill-cat">AI &amp; LLM</span>
+            <span class="skill-val">Prompt Engineering · OpenAI &amp; Anthropic APIs · Cursor · RAG Fundamentals</span>
+          </div>
+          <div class="skill-row">
+            <span class="skill-cat">Cloud &amp; Infra</span>
+            <span class="skill-val">AWS (EC2, S3) · GCP · Cloudflare (DNS, CDN) · BunnyCDN · Linux Admin</span>
+          </div>
+          <div class="skill-row">
+            <span class="skill-cat">Languages</span>
+            <span class="skill-val">Python · JavaScript · HTML/CSS · SQL · Bash · Git/GitHub</span>
+          </div>
+          <div class="skill-row">
+            <span class="skill-cat">Product &amp; Tools</span>
+            <span class="skill-val">Figma · Canva · OBS Studio · Streamyard · WordPress · Jira · Google Workspace</span>
+          </div>
+          <div class="skill-row">
+            <span class="skill-cat">Building Now</span>
+            <span class="skill-val">ML/PyTorch · LangChain · FastAPI · Docker · Networking (TCP/IP, DNS)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: EDUCATION + BUILDING -->
+      <div>
+        <div class="section">
+          <div class="section-label">Education</div>
+          <div class="edu-deg">B.Sc. Computer Science &amp; Engineering</div>
+          <div class="edu-inst">United International University (UIU) · Dhaka</div>
+          <div class="edu-note">2022 – Present · In Progress</div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">Currently Shipping</div>
+          <div class="building-text">
+            Completing <strong>DataCamp AI Engineer track</strong> · Building RAG apps with
+            LangChain + FastAPI · NeetCode 150 for algorithmic depth ·
+            Daily Python + ML practice
+          </div>
+          <div>
+            <span class="goal-tag">🎯 AI Engineer role · 6-month target</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end bottom-grid -->
+
+  </div><!-- end .resume -->
+</div><!-- end .page-wrapper -->
+
+</body>
+</html>
